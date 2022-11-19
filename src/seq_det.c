@@ -33,21 +33,19 @@ void random_data(int *array, int len_array)
 	}
 }
 
-int sequence_detector_v1(int *array, int len_array, int *seq, int len_seq)
+int sequence_detector_len3(int *array, int len_array, int *seq, int len_seq)
 {
 	int cont;
 	
 	cont = 0;
-
 	for(int i =0 ; i < len_array; i++)
 	{
 		if(array[i]==seq[0] && array[i+1]==seq[1] && array[i+2]==seq[2])
 		{
 			cont = cont + 1;
 		}
-
 	}
-	printf("Secuencia encontrada %d veces \n", cont);
+	printf("\nnumber of sequences: %d \n", cont);
    return cont;
 }
 
@@ -59,7 +57,6 @@ int sequence_detector_101(int *array, int len_array, int *seq, int len_seq)
 	i = 0;
 	cont = 0;
 	
-
 state_0:
 	if (i == len_array) goto END;
 	
@@ -77,6 +74,62 @@ state_2:
 
 	if (array[i] == 1) { printf(" 1 \n"); i++; cont ++; goto state_1; }
 	else { i++; goto state_0; }
+
+END:
+	printf("\nnumber of sequences: %d \n", cont);
+	
+   return cont;
+}
+
+int sequence_detector_len4(int *array, int len_array, int *seq, int len_seq)
+{
+	int cont;
+	
+	cont = 0;
+
+	for(int i =0 ; i < len_array; i++)
+	{
+		if(array[i]==seq[0] && array[i+1]==seq[1] && array[i+2]==seq[2] && array[i+3]==seq[3])
+		{
+			cont = cont + 1;
+		}
+
+	}
+	printf("\nnumber of sequences: %d \n", cont);
+   return cont;
+}
+
+int sequence_detector_1011(int *array, int len_array, int *seq, int len_seq)
+{
+	int i;
+	int cont;
+	
+	i = 0;
+	cont = 0;
+
+state_0:
+	if (i == len_array) goto END;
+	
+	if (array[i] == 1) { printf(" 1 "); i++; goto state_1; }
+	else { i++; goto state_0; }
+
+state_1:
+	if (i == len_array) goto END;
+
+	if (array[i] == 0) { printf(" 0 "); i++; goto state_2; }
+	else { i++; goto state_1; }
+
+state_2:
+	if (i == len_array) goto END;
+
+	if (array[i] == 1) { printf(" 1 "); i++; goto state_3; }
+	else { i++; goto state_0; }
+
+state_3:
+	if (i == len_array) goto END;
+
+	if (array[i] == 1) { printf(" 1 \n"); i++; cont ++; goto state_1; }
+	else { i++; goto state_2; }
 
 END:
 	printf("\nnumber of sequences: %d \n", cont);
